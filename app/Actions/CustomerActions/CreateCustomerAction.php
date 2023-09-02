@@ -1,8 +1,8 @@
 <?php
+
 namespace App\Actions\CustomerActions;
 
 use App\Models\Customer;
-
 
 class CreateCustomerAction
 {

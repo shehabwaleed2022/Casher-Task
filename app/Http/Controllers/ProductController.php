@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Actions\ProductActions\CreateProductAction;
 use App\Actions\ProductActions\GetProductsAction;
 use App\Http\Requests\StoreProductRequest;
-use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
@@ -27,7 +25,7 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request, CreateProductAction $createProductAction)
     {
         $createProductAction->execute($request->validated());
+
         return Redirect::back()->with('success', 'Product created successfully.');
     }
-
 }
