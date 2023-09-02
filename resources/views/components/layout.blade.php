@@ -13,7 +13,20 @@
 
     @include('components.nav')
 
+    @if (Session::has('success'))
+        <div class="bg-green-200 p-4 text-green-800" id="flash-message">
+            {{ Session::get('success') }}
+        </div>
+    @endif
+
     {{ $slot }}
+
+    <script>
+        setTimeout(function() {
+            document.getElementById('flash-message').style.display = 'none';
+        }, 2000);
+    </script>
+    
 </body>
 
 </html>

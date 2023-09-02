@@ -1,7 +1,7 @@
 <x-layout>
 
     <!-- component -->
-    <section class="flex flex-column items-center justify-center h-auto mt-[25vh]">
+    <section class="flex flex-column items-center justify-center h-auto mt-[14vh]">
         <div class="w-full max-w-2xl bg-white shadow-lg rounded-sm border border-gray-200">
             <!-- Table -->
             <div class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
