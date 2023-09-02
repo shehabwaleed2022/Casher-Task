@@ -19,4 +19,4 @@ Route::view('/', 'index');
 
 Route::resource('products', ProductController::class)->only('index', 'store');
 
-Route::resource('customers', CustomerController::class);
+Route::resource('customers', CustomerController::class)->only('index', 'store');
