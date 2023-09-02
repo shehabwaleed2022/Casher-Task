@@ -7,7 +7,7 @@ use App\Actions\CustomerActions\GetCustomersAction;
 use App\Http\Requests\StoreCustomerRequest;
 use Illuminate\Support\Facades\Redirect;
 
-class CustomerController extends Controller
+class CustomersController extends Controller
 {
     /**
      * Display a listing of the resource.

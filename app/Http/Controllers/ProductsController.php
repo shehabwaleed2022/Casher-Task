@@ -7,7 +7,7 @@ use App\Actions\ProductActions\GetProductsAction;
 use App\Http\Requests\StoreProductRequest;
 use Illuminate\Support\Facades\Redirect;
 
-class ProductController extends Controller
+class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.

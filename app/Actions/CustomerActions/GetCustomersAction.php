@@ -8,7 +8,7 @@ class GetCustomersAction
 {
     public function execute()
     {
-        $customers = Customer::all();
+        $customers = Customer::latest()->get();
 
         return $customers;
     }

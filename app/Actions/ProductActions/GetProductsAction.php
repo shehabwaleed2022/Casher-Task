@@ -8,7 +8,7 @@ class GetProductsAction
 {
     public function execute()
     {
-        $products = Product::all();
+        $products = Product::latest()->get();
 
         return $products;
     }

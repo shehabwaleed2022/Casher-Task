@@ -22,7 +22,7 @@ class StoreCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['string', 'min:3', 'max:255'],
+            'name' => ['string', 'min:3', 'max:255','unique:customers,name'],
         ];
     }
 }
