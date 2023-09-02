@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SalesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\OrdersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +22,4 @@ Route::resource('products', ProductsController::class)->only('index', 'store');
 
 Route::resource('customers', CustomersController::class)->only('index', 'store');
 
-Route::resource('sales', SalesController::class);
+Route::resource('orders', OrdersController::class);
