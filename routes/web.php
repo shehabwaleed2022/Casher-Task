@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\AddProductToInvoiceController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\ProductsController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,5 @@ Route::resource('products', ProductsController::class)->only('index', 'store');
 Route::resource('customers', CustomersController::class)->only('index', 'store');
 
 Route::resource('orders', OrdersController::class);
+
+Route::post('invoice/product', AddProductToInvoiceController::class)->name('invoice.product.store');

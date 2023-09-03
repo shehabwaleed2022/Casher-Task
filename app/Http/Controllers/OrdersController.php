@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\CustomerActions\GetCustomersAction;
+use App\Actions\InvoiceActions\GetInvoiceProductsAction;
 use App\Actions\ProductActions\GetProductsAction;
 use Illuminate\Http\Request;
 
@@ -11,12 +12,13 @@ class OrdersController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(GetProductsAction $getProductsAction, GetCustomersAction $getCustomersAction)
+    public function index(GetProductsAction $getProductsAction, GetCustomersAction $getCustomersAction, GetInvoiceProductsAction $getInvoiceProductsAction)
     {
         $products = $getProductsAction->execute();
+        $invoiceProducts = $getInvoiceProductsAction->execute();
         $customers = $getCustomersAction->execute();
 
-        return view('orders.index', compact('products', 'customers'));
+        return view('orders.index', compact('products', 'customers', 'invoiceProducts'));
 
     }
 

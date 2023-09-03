@@ -5,7 +5,7 @@
         <h1 class="p-6 text-[24px]">Create New Order</h1>
 
         <div class="mx-auto w-full max-w-[550px]">
-            <form action="{{ route('orders.store') }}" method="POST">
+            <form action="{{ route('invoice.product.store') }}" method="POST">
                 @csrf
 
                 <div class="mb-5">
@@ -15,7 +15,7 @@
                     @error('customer_name')
                         <p class="text-red-500 mb-2">{{ $message }}</p>
                     @enderror
-                    <select id="customer-name" name="customer_name"
+                    <select id="customer-name" name="customer_id"
                         class="block bg-white w-full px-4 py-2 border rounded-md focus:ring focus:ring-[#07074D] focus:ring-opacity-50">
                         @foreach ($customers as $customer)
                             <option value="{{ $customer->id }}">{{ $customer->name }}</option>
@@ -30,7 +30,7 @@
                     @error('product_name')
                         <p class="text-red-500 mb-2">{{ $message }}</p>
                     @enderror
-                    <select id="product-name" name="product_name"
+                    <select id="product-name" name="product_id"
                         class="block bg-white w-full px-4 py-2 border rounded-md focus:ring focus:ring-[#07074D] focus:ring-opacity-50">
                         @foreach ($products as $product)
                             <option value="{{ $product->id }}">{{ $product->name }} (
@@ -76,12 +76,12 @@
 
 
     <!-- component -->
-    <section class="flex flex-column items-center justify-center h-auto mt-[14vh]">
+    <section class="flex flex-column items-center justify-center h-auto  mb-16">
         <div class="w-full max-w-2xl bg-white shadow-lg rounded-sm border border-gray-200">
             <!-- Table -->
             <div class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
                 <header class="px-5 py-4 border-b border-gray-100">
-                    <h2 class="font-semibold text-gray-800">Products</h2>
+                    <h2 class="font-semibold text-gray-800">Invoice Products</h2>
                 </header>
                 <div class="p-3">
                     <div class="overflow-x-auto">
@@ -94,12 +94,26 @@
                                     <th class="p-2 whitespace-nowrap">
                                         <div class="font-semibold text-left">السعر</div>
                                     </th>
+                                    <th class="p-2 whitespace-nowrap">
+                                        <div class="font-semibold text-left">الكمية</div>
+                                    </th>
+                                    <th class="p-2 whitespace-nowrap">
+                                        <div class="font-semibold text-left">الحساب الكلي</div>
+                                    </th>
+                                    <th class="p-2 whitespace-nowrap">
+                                        <div class="font-semibold text-left">اسم العميل</div>
+                                    </th>
+                                    <th class="p-2 whitespace-nowrap">
+                                        <div class="font-semibold text-left">التاريخ</div>
+                                    </th>
                                 </tr>
                             </thead>
 
                             <tbody class="text-sm divide-y divide-gray-100">
-                                @foreach ($products as $product)
-                                    @include('products.components.product', ['product' => $product])
+                                @foreach ($invoiceProducts as $product)
+                                    @include('products.components.invoiceProduct', [
+                                        'invoiceData' => $product,
+                                    ])
                                 @endforeach
                             </tbody>
                         </table>
