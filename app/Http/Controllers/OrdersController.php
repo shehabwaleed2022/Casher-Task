@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Actions\ProductActions\GetProductsAction;
 use App\Actions\CustomerActions\GetCustomersAction;
 use App\Actions\InvoiceActions\GetInvoiceProductsAction;

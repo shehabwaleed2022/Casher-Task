@@ -20,11 +20,12 @@ class CreateOrderFromSessionAction
             $totalQuantity += intval($product['quantity']);
         }
 
-        dd(Order::create([
+        $orderData = Order::create([
             'customer_id' => $invoiceProducts[0]['customer']->id,
             'quantity' => $totalQuantity,
             'total_amount' => $totalAmount
-        ]));
+        ]);
+
 
         Session::flush();
         return true;

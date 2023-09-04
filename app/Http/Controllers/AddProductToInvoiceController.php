@@ -14,7 +14,7 @@ class AddProductToInvoiceController extends Controller
     public function __invoke(StoreProductInInvoiceRequest $request, AddProductIntoInvoiceAction $addProductIntoInvoiceAction)
     {
 
-        if (Session::get('invoiceProducts')[0]['customer_id'] != $request->customer_id)
+        if (!empty(Session::get('invoiceProducts')) && Session::get('invoiceProducts')[0]['customer_id'] != $request->customer_id)
             return back()->with('failed', 'Please finish current customer\'s order');
 
         $addProductIntoInvoiceAction->execute($request);

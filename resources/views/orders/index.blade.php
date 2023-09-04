@@ -17,7 +17,8 @@
                     <select id="customer-name" name="customer_id"
                         class="block bg-white w-full px-4 py-2 border rounded-md focus:ring focus:ring-[#07074D] focus:ring-opacity-50">
                         @foreach ($customers as $customer)
-                            <option value="{{ $customer->id }}" @selected($customer->id == $invoiceProducts->first()['customer_id'] ??false )>{{ $customer->name }}
+                            <option value="{{ $customer->id }}" @if (empty($invoiceProducts) && $customer->id == $invoiceProducts->first()['customer_id']) selected @endif>
+                                {{ $customer->name }}
                             </option>
                         @endforeach
                     </select>
