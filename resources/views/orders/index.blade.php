@@ -7,7 +7,6 @@
         <div class="mx-auto w-full max-w-[550px]">
             <form action="{{ route('invoice.product.store') }}" method="POST">
                 @csrf
-
                 <div class="mb-5">
                     <label for="customer-name" class="mb-3 block text-base font-medium text-[#07074D]">
                         Customer Name
@@ -18,7 +17,8 @@
                     <select id="customer-name" name="customer_id"
                         class="block bg-white w-full px-4 py-2 border rounded-md focus:ring focus:ring-[#07074D] focus:ring-opacity-50">
                         @foreach ($customers as $customer)
-                            <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                            <option value="{{ $customer->id }}" @selected($customer->id == $invoiceProducts->first()['customer_id'] ??false )>{{ $customer->name }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -76,7 +76,7 @@
 
 
     <!-- component -->
-    <section class="flex flex-column items-center justify-center h-auto  mb-16">
+    <section class="flex flex-col items-center justify-center h-auto  mb-16">
         <div class="w-full max-w-2xl bg-white shadow-lg rounded-sm border border-gray-200">
             <!-- Table -->
             <div class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
@@ -121,6 +121,14 @@
                 </div>
             </div>
         </div>
+        <form action="{{ route('orders.store') }}" method="POST" class="mt-4">
+            @csrf
+            <button type="submit"
+                class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none">
+                Create Order
+            </button>
+        </form>
+
     </section>
 
 

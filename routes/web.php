@@ -23,6 +23,6 @@ Route::resource('products', ProductsController::class)->only('index', 'store');
 
 Route::resource('customers', CustomersController::class)->only('index', 'store');
 
-Route::resource('orders', OrdersController::class);
+Route::resource('orders', OrdersController::class)->only('index' , 'store');
 
 Route::post('invoice/product', AddProductToInvoiceController::class)->name('invoice.product.store');

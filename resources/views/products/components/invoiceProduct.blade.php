@@ -27,7 +27,7 @@
 
     <td class="p-4 whitespace-nowrap">
         <div class="flex items-center">
-            <div class="font-medium text-gray-800">{{ $invoiceData['customer'] }}</div>
+            <div class="font-medium text-gray-800">{{ $invoiceData['customer']->name }}</div>
         </div>
     </td>
 

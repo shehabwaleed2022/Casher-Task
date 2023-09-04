@@ -13,9 +13,9 @@ class AddProductIntoInvoiceAction
     {
         $invoiceProducts = session('invoiceProducts', []);
 
-        $newData = $request->only('quantity', 'date');
-        $newData['product'] = Product::where('id', $request->product_id)->select(['name', 'price'])->first();
-        $newData['customer'] = Customer::where('id', $request->customer_id)->pluck('name')->first();
+        $newData = $request->only('quantity', 'date','customer_id');
+        $newData['product'] = Product::where('id', $request->product_id)->select(['id', 'name', 'price'])->first();
+        $newData['customer'] = Customer::where('id', $request->customer_id)->select(['id', 'name'])->first();
 
         $invoiceProducts[] = $newData;
 
