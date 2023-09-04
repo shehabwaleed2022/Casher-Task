@@ -2,6 +2,8 @@
 namespace App\Actions\OrderActions;
 
 use App\Models\Order;
+use App\Models\OrderProduct;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 
 class CreateOrderFromSessionAction
@@ -26,6 +28,14 @@ class CreateOrderFromSessionAction
             'total_amount' => $totalAmount
         ]);
 
+        foreach ($invoiceProducts as $product) {
+            OrderProduct::create([
+                'order_id' => $orderData->id,
+                'product_id' => $product['product']['id'],
+                'quantity' => $product['quantity'],
+                'date' => Carbon::parse($product['date']),
+            ]);
+        }
 
         Session::flush();
         return true;
