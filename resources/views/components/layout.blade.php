@@ -18,6 +18,12 @@
         </div>
     @endif
 
+    @if (Session::has('failed'))
+        <div class="bg-red-200 p-4 text-black-800" id="flash-message">
+            {{ Session::get('failed') }}
+        </div>
+    @endif
+
     {{ $slot }}
 
     <script>
