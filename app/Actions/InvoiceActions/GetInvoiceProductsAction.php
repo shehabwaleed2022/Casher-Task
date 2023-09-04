@@ -8,7 +8,8 @@ class GetInvoiceProductsAction
     public function execute()
     {
         $products = collect(Session::get('invoiceProducts'));
-
+        if ($products->count() == 0)
+            return null;
         return $products;
     }
 }

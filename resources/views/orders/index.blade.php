@@ -17,7 +17,7 @@
                     <select id="customer-name" name="customer_id"
                         class="block bg-white w-full px-4 py-2 border rounded-md focus:ring focus:ring-[#07074D] focus:ring-opacity-50">
                         @foreach ($customers as $customer)
-                            <option value="{{ $customer->id }}" @if (empty($invoiceProducts) && $customer->id == $invoiceProducts->first()['customer_id']) selected @endif>
+                            <option value="{{ $customer->id }}" @selected($customer->id == $invoiceProducts?->first()['customer_id'])>
                                 {{ $customer->name }}
                             </option>
                         @endforeach
@@ -111,11 +111,13 @@
                             </thead>
 
                             <tbody class="text-sm divide-y divide-gray-100">
-                                @foreach ($invoiceProducts as $product)
-                                    @include('products.components.invoiceProduct', [
-                                        'invoiceData' => $product,
-                                    ])
-                                @endforeach
+                                @if ($invoiceProducts)
+                                    @foreach ($invoiceProducts as $product)
+                                        @include('products.components.invoiceProduct', [
+                                            'invoiceData' => $product,
+                                        ])
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>
