@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Session;
-use App\Http\Requests\StoreProductInInvoiceRequest;
 use App\Actions\InvoiceActions\AddProductIntoInvoiceAction;
+use App\Http\Requests\StoreProductInInvoiceRequest;
+use Illuminate\Support\Facades\Session;
 
 class AddProductToInvoiceController extends Controller
 {
@@ -14,8 +14,9 @@ class AddProductToInvoiceController extends Controller
     public function __invoke(StoreProductInInvoiceRequest $request, AddProductIntoInvoiceAction $addProductIntoInvoiceAction)
     {
 
-        if (!empty(Session::get('invoiceProducts')) && Session::get('invoiceProducts')[0]['customer_id'] != $request->customer_id)
+        if (! empty(Session::get('invoiceProducts')) && Session::get('invoiceProducts')[0]['customer_id'] != $request->customer_id) {
             return back()->with('failed', 'Please finish current customer\'s order');
+        }
 
         $addProductIntoInvoiceAction->execute($request);
 

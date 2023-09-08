@@ -2,10 +2,9 @@
 
 namespace App\Actions\InvoiceActions;
 
-use App\Models\Product;
-use App\Models\Customer;
-use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StoreProductInInvoiceRequest;
+use App\Models\Customer;
+use App\Models\Product;
 
 class AddProductIntoInvoiceAction
 {
@@ -13,7 +12,7 @@ class AddProductIntoInvoiceAction
     {
         $invoiceProducts = session('invoiceProducts', []);
 
-        $newData = $request->only('quantity', 'date','customer_id');
+        $newData = $request->only('quantity', 'date', 'customer_id');
         $newData['product'] = Product::where('id', $request->product_id)->select(['id', 'name', 'price'])->first();
         $newData['customer'] = Customer::where('id', $request->customer_id)->select(['id', 'name'])->first();
 

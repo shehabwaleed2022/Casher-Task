@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\ProductActions\GetProductsAction;
 use App\Actions\CustomerActions\GetCustomersAction;
 use App\Actions\InvoiceActions\GetInvoiceProductsAction;
 use App\Actions\OrderActions\CreateOrderFromSessionAction;
+use App\Actions\ProductActions\GetProductsAction;
 
 class OrdersController extends Controller
 {
@@ -26,10 +26,10 @@ class OrdersController extends Controller
      */
     public function store(CreateOrderFromSessionAction $createOrderFromSessionAction)
     {
-        if ($createOrderFromSessionAction->execute())
+        if ($createOrderFromSessionAction->execute()) {
             return back()->with('success', 'Order created successfully.');
-        else
+        } else {
             return back()->with('failed', 'Please add some prodects to the invoice.');
+        }
     }
-
 }
